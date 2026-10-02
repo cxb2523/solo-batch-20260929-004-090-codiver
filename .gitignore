@@ -26,3 +26,7 @@ build/
 .mypy_cache/
 .coverage
 htmlcov/
+
+# Local scratch / verification runtime artifacts
+.work/
+

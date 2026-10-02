@@ -3,99 +3,115 @@ Naming Convention and Documentation Smell Detectors
 Validates naming standards and documentation coverage
 """
 
-from typing import List, Dict, Any
-import javalang
-from detectors.base import CodeSmell
+from typing import List
+
+from detectors.base import Detector, REGISTRY, AnalysisContext, Finding
 from utils.helpers import validate_class_name, validate_method_name
 
 
-class NamingSmells(CodeSmell):
+@REGISTRY.register
+class NamingSmells(Detector):
     """
     Detects naming convention violations including:
     - Invalid class names (PascalCase)
     - Invalid method names (camelCase)
     - Short identifiers
     """
-    
-    def detect(self, tree: javalang.tree.CompilationUnit, lines: List[str]) -> List[Dict[str, Any]]:
+
+    config_key = "naming"
+    display_name = "Naming Conventions"
+    category = "Naming"
+
+    def analyze(self, ctx: AnalysisContext) -> List[Finding]:
         """Detect all naming convention violations."""
         results = []
-        
+
         # Check class naming conventions
-        for _, node in tree.filter(javalang.tree.ClassDeclaration):
+        for _path, node in ctx.iter_classes():
             if not validate_class_name(node.name):
-                results.append(self._create_issue(
+                results.append(self.finding(
+                    ctx,
                     "Invalid Class Name",
                     node.name,
                     "Low",
                     "Class name should follow PascalCase convention",
-                    "Naming"
+                    node=node,
                 ))
-            
+
             if len(node.name) < 3:
-                results.append(self._create_issue(
+                results.append(self.finding(
+                    ctx,
                     "Short Name",
                     node.name,
                     "Low",
                     "Class name too short (< 3 characters)",
-                    "Naming"
+                    node=node,
                 ))
-        
+
         # Check method naming conventions
-        for _, node in tree.filter(javalang.tree.MethodDeclaration):
+        for _path, node in ctx.iter_methods():
             if not validate_method_name(node.name):
-                results.append(self._create_issue(
+                results.append(self.finding(
+                    ctx,
                     "Invalid Method Name",
                     node.name,
                     "Low",
                     "Method name should follow camelCase convention",
-                    "Naming"
+                    node=node,
                 ))
-            
+
             # Allow short common method names
             if len(node.name) < 3 and node.name not in ['is', 'do', 'to', 'of']:
-                results.append(self._create_issue(
+                results.append(self.finding(
+                    ctx,
                     "Short Name",
                     node.name,
                     "Low",
                     "Method name too short (< 3 characters)",
-                    "Naming"
+                    node=node,
                 ))
-        
+
         return results
 
 
-class DocumentationSmells(CodeSmell):
+@REGISTRY.register
+class DocumentationSmells(Detector):
     """
     Detects missing or inadequate documentation including:
     - Missing class Javadoc
     - Missing public method Javadoc
     """
-    
-    def detect(self, tree: javalang.tree.CompilationUnit, lines: List[str]) -> List[Dict[str, Any]]:
+
+    config_key = "documentation"
+    display_name = "Documentation Coverage"
+    category = "Documentation"
+
+    def analyze(self, ctx: AnalysisContext) -> List[Finding]:
         """Detect all documentation issues."""
         results = []
-        
+
         # Check class documentation
-        for _, node in tree.filter(javalang.tree.ClassDeclaration):
+        for _path, node in ctx.iter_classes():
             if not node.documentation:
-                results.append(self._create_issue(
+                results.append(self.finding(
+                    ctx,
                     "Missing Class Documentation",
                     node.name,
                     "Low",
                     "No Javadoc found for class",
-                    "Documentation"
+                    node=node,
                 ))
-        
+
         # Check public method documentation
-        for _, node in tree.filter(javalang.tree.MethodDeclaration):
+        for _path, node in ctx.iter_methods():
             if 'public' in (node.modifiers or []) and not node.documentation:
-                results.append(self._create_issue(
+                results.append(self.finding(
+                    ctx,
                     "Missing Method Documentation",
                     node.name,
                     "Low",
                     "No Javadoc found for public method",
-                    "Documentation"
+                    node=node,
                 ))
-        
+
         return results

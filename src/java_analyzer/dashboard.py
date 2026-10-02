@@ -16,6 +16,7 @@ from utils.ui_components import (
     render_code_metrics,
     render_visualizations,
     render_detailed_findings,
+    render_detector_catalog,
     render_source_code_viewer,
     render_summary_report,
     render_landing_page
@@ -33,6 +34,10 @@ def initialize_session_state():
         st.session_state.source_code = None
     if 'file_name' not in st.session_state:
         st.session_state.file_name = None
+    if 'detector_catalog' not in st.session_state:
+        st.session_state.detector_catalog = []
+    if 'cache_stats' not in st.session_state:
+        st.session_state.cache_stats = {"hits": 0, "misses": 0}
 
 
 def configure_page():
@@ -161,6 +166,7 @@ def handle_analysis(source_code: str, config: dict = None):
         config: Analysis configuration dictionary
     """
     engine = StaticAnalyzerEngine(source_code, config)
+    engine.file_name = st.session_state.get('file_name')
     
     try:
         with st.spinner(" Parsing AST nodes and executing analyzers..."):
@@ -170,6 +176,9 @@ def handle_analysis(source_code: str, config: dict = None):
             # Store results in session state
             st.session_state.analysis_results = results
             st.session_state.analysis_metrics = metrics
+            # New catalog/cache telemetry (additive; legacy keys untouched).
+            st.session_state.detector_catalog = engine.catalog
+            st.session_state.cache_stats = engine.cache_stats
             
     except ValueError as ve:
         st.error(f"❌ **Validation Error:** {ve}")
@@ -197,6 +206,17 @@ def display_analysis_results():
         st.markdown("---")
         
         render_detailed_findings(df)
+
+        st.markdown("---")
+
+        # Detector catalog panel (registry order, per-detector findings
+        # and this run's AST cache hits).
+        cache_stats = st.session_state.get('cache_stats') or {"hits": 0, "misses": 0}
+        render_detector_catalog(
+            st.session_state.get('detector_catalog') or [],
+            cache_stats.get("hits", 0),
+            cache_stats.get("misses", 0),
+        )
         
         # Source code viewer
         render_source_code_viewer(st.session_state.source_code)

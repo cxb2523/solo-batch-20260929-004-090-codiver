@@ -1,0 +1,362 @@
+{
+  "total": 37,
+  "cache_cold": {
+    "hits": 0,
+    "misses": 1
+  },
+  "cache_warm": {
+    "hits": 1,
+    "misses": 0
+  },
+  "cache_edited": {
+    "hits": 0,
+    "misses": 1
+  },
+  "catalog_order": [
+    "design",
+    "implementation",
+    "naming",
+    "documentation"
+  ],
+  "counts": {
+    "design": 7,
+    "implementation": 4,
+    "naming": 3,
+    "documentation": 23
+  },
+  "findings": [
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 1,
+      "severity": "Critical",
+      "category": "Design",
+      "type": "God Class",
+      "target": "OrderProcessor",
+      "reason": "8 methods, 16 fields"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 20,
+      "severity": "Medium",
+      "category": "Design",
+      "type": "Feature Envy",
+      "target": "OrderProcessor.classify",
+      "reason": "11 external method calls"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 129,
+      "severity": "Medium",
+      "category": "Design",
+      "type": "Swiss Army Knife",
+      "target": "UniversalService",
+      "reason": "6 interfaces implemented"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 132,
+      "severity": "Low",
+      "category": "Design",
+      "type": "Data Class",
+      "target": "CustomerData",
+      "reason": "No behavioral logic found"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 154,
+      "severity": "Low",
+      "category": "Design",
+      "type": "Lazy Class",
+      "target": "Helper",
+      "reason": "Minimal functionality: 1 methods, 0 fields"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 160,
+      "severity": "Low",
+      "category": "Design",
+      "type": "Lazy Class",
+      "target": "BaseThing",
+      "reason": "Minimal functionality: 1 methods, 0 fields"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 160,
+      "severity": "Low",
+      "category": "Design",
+      "type": "Abstract Without Abstracts",
+      "target": "BaseThing",
+      "reason": "Abstract class with no abstract methods"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 58,
+      "severity": "Low",
+      "category": "Implementation",
+      "type": "Magic Numbers",
+      "target": "calculate",
+      "reason": "4 hard-coded numeric literals found"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 62,
+      "severity": "Medium",
+      "category": "Implementation",
+      "type": "Long Method",
+      "target": "longMethod",
+      "reason": "Method body contains 32 statements"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 97,
+      "severity": "Low",
+      "category": "Implementation",
+      "type": "Long Parameter List",
+      "target": "configure",
+      "reason": "6 parameters"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 100,
+      "severity": "Critical",
+      "category": "Implementation",
+      "type": "Empty Catch Block",
+      "target": "risky",
+      "reason": "Exception swallowed without logs or logic"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 166,
+      "severity": "Low",
+      "category": "Naming",
+      "type": "Invalid Class Name",
+      "target": "bad_name",
+      "reason": "Class name should follow PascalCase convention"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 168,
+      "severity": "Low",
+      "category": "Naming",
+      "type": "Invalid Method Name",
+      "target": "BadMethodName",
+      "reason": "Method name should follow camelCase convention"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 171,
+      "severity": "Low",
+      "category": "Naming",
+      "type": "Short Name",
+      "target": "ab",
+      "reason": "Method name too short (< 3 characters)"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 1,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Class Documentation",
+      "target": "OrderProcessor",
+      "reason": "No Javadoc found for class"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 129,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Class Documentation",
+      "target": "UniversalService",
+      "reason": "No Javadoc found for class"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 132,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Class Documentation",
+      "target": "CustomerData",
+      "reason": "No Javadoc found for class"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 154,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Class Documentation",
+      "target": "Helper",
+      "reason": "No Javadoc found for class"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 160,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Class Documentation",
+      "target": "BaseThing",
+      "reason": "No Javadoc found for class"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 166,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Class Documentation",
+      "target": "bad_name",
+      "reason": "No Javadoc found for class"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 20,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "classify",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 58,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "calculate",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 62,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "longMethod",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 97,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "configure",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 100,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "risky",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 107,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "deeplyNested",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 121,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "doWork",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 124,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "ready",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 137,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "getName",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 141,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "setName",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 145,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "getCode",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 149,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "setCode",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 156,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "run",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 162,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "initialize",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 168,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "BadMethodName",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 171,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "ab",
+      "reason": "No Javadoc found for public method"
+    },
+    {
+      "file": "OrderProcessorSample.java",
+      "line": 175,
+      "severity": "Low",
+      "category": "Documentation",
+      "type": "Missing Method Documentation",
+      "target": "normal",
+      "reason": "No Javadoc found for public method"
+    }
+  ]
+}

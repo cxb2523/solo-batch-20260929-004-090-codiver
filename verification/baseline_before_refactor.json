@@ -1,0 +1,277 @@
+{
+  "issue_count": 37,
+  "issues": [
+    {
+      "Type": "God Class",
+      "Target": "OrderProcessor",
+      "Severity": "Critical",
+      "Reason": "8 methods, 16 fields",
+      "Category": "Design"
+    },
+    {
+      "Type": "Feature Envy",
+      "Target": "OrderProcessor.classify",
+      "Severity": "Medium",
+      "Reason": "11 external method calls",
+      "Category": "Design"
+    },
+    {
+      "Type": "Swiss Army Knife",
+      "Target": "UniversalService",
+      "Severity": "Medium",
+      "Reason": "6 interfaces implemented",
+      "Category": "Design"
+    },
+    {
+      "Type": "Data Class",
+      "Target": "CustomerData",
+      "Severity": "Low",
+      "Reason": "No behavioral logic found",
+      "Category": "Design"
+    },
+    {
+      "Type": "Lazy Class",
+      "Target": "Helper",
+      "Severity": "Low",
+      "Reason": "Minimal functionality: 1 methods, 0 fields",
+      "Category": "Design"
+    },
+    {
+      "Type": "Lazy Class",
+      "Target": "BaseThing",
+      "Severity": "Low",
+      "Reason": "Minimal functionality: 1 methods, 0 fields",
+      "Category": "Design"
+    },
+    {
+      "Type": "Abstract Without Abstracts",
+      "Target": "BaseThing",
+      "Severity": "Low",
+      "Reason": "Abstract class with no abstract methods",
+      "Category": "Design"
+    },
+    {
+      "Type": "Magic Numbers",
+      "Target": "calculate",
+      "Severity": "Low",
+      "Reason": "4 hard-coded numeric literals found",
+      "Category": "Implementation"
+    },
+    {
+      "Type": "Long Method",
+      "Target": "longMethod",
+      "Severity": "Medium",
+      "Reason": "Method body contains 32 statements",
+      "Category": "Implementation"
+    },
+    {
+      "Type": "Long Parameter List",
+      "Target": "configure",
+      "Severity": "Low",
+      "Reason": "6 parameters",
+      "Category": "Implementation"
+    },
+    {
+      "Type": "Empty Catch Block",
+      "Target": "risky",
+      "Severity": "Critical",
+      "Reason": "Exception swallowed without logs or logic",
+      "Category": "Implementation"
+    },
+    {
+      "Type": "Invalid Class Name",
+      "Target": "bad_name",
+      "Severity": "Low",
+      "Reason": "Class name should follow PascalCase convention",
+      "Category": "Naming"
+    },
+    {
+      "Type": "Invalid Method Name",
+      "Target": "BadMethodName",
+      "Severity": "Low",
+      "Reason": "Method name should follow camelCase convention",
+      "Category": "Naming"
+    },
+    {
+      "Type": "Short Name",
+      "Target": "ab",
+      "Severity": "Low",
+      "Reason": "Method name too short (< 3 characters)",
+      "Category": "Naming"
+    },
+    {
+      "Type": "Missing Class Documentation",
+      "Target": "OrderProcessor",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for class",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Class Documentation",
+      "Target": "UniversalService",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for class",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Class Documentation",
+      "Target": "CustomerData",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for class",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Class Documentation",
+      "Target": "Helper",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for class",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Class Documentation",
+      "Target": "BaseThing",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for class",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Class Documentation",
+      "Target": "bad_name",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for class",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "classify",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "calculate",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "longMethod",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "configure",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "risky",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "deeplyNested",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "doWork",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "ready",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "getName",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "setName",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "getCode",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "setCode",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "run",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "initialize",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "BadMethodName",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "ab",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "normal",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    }
+  ],
+  "metrics": {
+    "total_classes": 6,
+    "total_methods": 17,
+    "total_fields": 18,
+    "total_lines": 178,
+    "blank_lines": 25,
+    "comment_lines": 0,
+    "avg_method_length": 4.909090909090909,
+    "max_method_length": 32,
+    "avg_complexity": 1.0,
+    "max_complexity": 1,
+    "code_lines": 153
+  }
+}

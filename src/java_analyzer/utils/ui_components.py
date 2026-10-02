@@ -261,6 +261,66 @@ def render_source_code_viewer(source_code: str):
         st.code(source_code, language='java', line_numbers=True)
 
 
+def render_detector_catalog(catalog, cache_hits: int, cache_misses: int):
+    """
+    Render the detector catalog panel.
+
+    Detectors are listed in registry order. Each entry is an expander
+    showing that detector's findings (file / line / severity / reason).
+    The run's AST cache hit count is shown at the top, so repeat runs on
+    an unchanged sample can be compared on a recording.
+
+    Args:
+        catalog: List of catalog dicts produced by the analyzer engine
+        cache_hits: Number of AST cache hits for this run
+        cache_misses: Number of AST cache misses for this run
+    """
+    st.markdown("### Detector Catalog")
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("AST Cache Hits", cache_hits,
+                  delta="reused" if cache_hits > 0 else "fresh parse",
+                  delta_color="off")
+    with col2:
+        st.metric("Cache Misses", cache_misses)
+    with col3:
+        registered = len(catalog) if catalog else 0
+        active = len([entry for entry in catalog if entry.get("enabled")]) if catalog else 0
+        st.metric("Active Detectors", f"{active}/{registered}")
+
+    st.caption("Detectors are listed in registry order; expand an entry to review its violations.")
+
+    if not catalog:
+        st.info("No detectors registered.")
+        return
+
+    for index, entry in enumerate(catalog, start=1):
+        enabled = entry.get("enabled", False)
+        count = entry.get("count", 0)
+        status = "ON" if enabled else "OFF"
+        title = (
+            f"{index}. {entry.get('name', entry.get('config_key', 'Detector'))} "
+            f"[{entry.get('category', '-')}] - {status} - {count} finding(s)"
+        )
+        with st.expander(title, expanded=False):
+            findings = entry.get("findings", [])
+            if not enabled:
+                st.caption("This detector is disabled in the current configuration.")
+            if findings:
+                catalog_df = pd.DataFrame(findings)
+                columns = [column for column in
+                           ["File", "Line", "Severity", "Type", "Target", "Reason"]
+                           if column in catalog_df.columns]
+                st.dataframe(
+                    catalog_df[columns],
+                    use_container_width=True,
+                    hide_index=True,
+                )
+            else:
+                st.success("No violations reported by this detector.")
+
+
 def render_summary_report(df: pd.DataFrame, metrics: Dict[str, Any], file_name: str):
     """
     Render executive summary report with download option.
