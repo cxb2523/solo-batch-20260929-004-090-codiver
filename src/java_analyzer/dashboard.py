@@ -10,17 +10,32 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 
-from analyzer_engine import StaticAnalyzerEngine
-from utils.ui_components import (
-    render_executive_summary,
-    render_code_metrics,
-    render_visualizations,
-    render_detailed_findings,
-    render_source_code_viewer,
-    render_summary_report,
-    render_landing_page
-)
-from utils.helpers import format_file_size
+try:
+    from analyzer_engine import StaticAnalyzerEngine
+    from utils.ui_components import (
+        render_detector_catalog,
+        render_executive_summary,
+        render_code_metrics,
+        render_visualizations,
+        render_detailed_findings,
+        render_source_code_viewer,
+        render_summary_report,
+        render_landing_page,
+    )
+    from utils.helpers import format_file_size
+except ImportError:
+    from java_analyzer.analyzer_engine import StaticAnalyzerEngine
+    from java_analyzer.utils.ui_components import (
+        render_detector_catalog,
+        render_executive_summary,
+        render_code_metrics,
+        render_visualizations,
+        render_detailed_findings,
+        render_source_code_viewer,
+        render_summary_report,
+        render_landing_page,
+    )
+    from java_analyzer.utils.helpers import format_file_size
 
 
 def initialize_session_state():
@@ -33,6 +48,10 @@ def initialize_session_state():
         st.session_state.source_code = None
     if 'file_name' not in st.session_state:
         st.session_state.file_name = None
+    if 'analysis_findings' not in st.session_state:
+        st.session_state.analysis_findings = []
+    if 'cache_hits' not in st.session_state:
+        st.session_state.cache_hits = 0
 
 
 def configure_page():
@@ -160,7 +179,8 @@ def handle_analysis(source_code: str, config: dict = None):
         source_code: Java source code to analyze
         config: Analysis configuration dictionary
     """
-    engine = StaticAnalyzerEngine(source_code, config)
+    file_name = st.session_state.get("file_name") or "<input>.java"
+    engine = StaticAnalyzerEngine(source_code, config, file_name=file_name)
     
     try:
         with st.spinner(" Parsing AST nodes and executing analyzers..."):
@@ -170,13 +190,19 @@ def handle_analysis(source_code: str, config: dict = None):
             # Store results in session state
             st.session_state.analysis_results = results
             st.session_state.analysis_metrics = metrics
+            st.session_state.analysis_findings = engine.findings
+            st.session_state.cache_hits = engine.last_cache_hits
             
     except ValueError as ve:
         st.error(f"❌ **Validation Error:** {ve}")
         st.info(" [TIP]  Please ensure your Java file has valid syntax and try again.")
+        st.session_state.analysis_findings = []
+        st.session_state.cache_hits = 0
     except Exception as e:
         st.error(f"❌ **System Error:** {e}")
         st.exception(e)
+        st.session_state.analysis_findings = []
+        st.session_state.cache_hits = 0
 
 
 def display_analysis_results():
@@ -194,6 +220,12 @@ def display_analysis_results():
         st.markdown("---")
         
         render_visualizations(df)
+        st.markdown("---")
+
+        render_detector_catalog(
+            st.session_state.analysis_findings,
+            st.session_state.cache_hits,
+        )
         st.markdown("---")
         
         render_detailed_findings(df)
@@ -228,6 +260,8 @@ def main():
             # Reset analysis when new file is uploaded
             st.session_state.analysis_results = None
             st.session_state.analysis_metrics = None
+            st.session_state.analysis_findings = []
+            st.session_state.cache_hits = 0
         
         # Display file information
         render_file_info(

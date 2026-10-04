@@ -1,0 +1,132 @@
+[
+  {
+    "file": "CoDiverSample.java",
+    "line": 1,
+    "severity": "Medium",
+    "type": "Swiss Army Knife",
+    "target": "badExample",
+    "category": "Design",
+    "reason": "7 interfaces implemented",
+    "before_refactor_legacy_order": 1
+  },
+  {
+    "file": "CoDiverSample.java",
+    "line": 1,
+    "severity": "Critical",
+    "type": "God Class",
+    "target": "badExample",
+    "category": "Design",
+    "reason": "4 methods, 16 fields",
+    "before_refactor_legacy_order": 2
+  },
+  {
+    "file": "CoDiverSample.java",
+    "line": 19,
+    "severity": "Medium",
+    "type": "Feature Envy",
+    "target": "badExample.process",
+    "category": "Design",
+    "reason": "21 external method calls",
+    "before_refactor_legacy_order": 3
+  },
+  {
+    "file": "CoDiverSample.java",
+    "line": 19,
+    "severity": "Medium",
+    "type": "Long Method",
+    "target": "process",
+    "category": "Implementation",
+    "reason": "Method body contains 32 statements",
+    "before_refactor_legacy_order": 4
+  },
+  {
+    "file": "CoDiverSample.java",
+    "line": 19,
+    "severity": "Low",
+    "type": "Long Parameter List",
+    "target": "process",
+    "category": "Implementation",
+    "reason": "7 parameters",
+    "before_refactor_legacy_order": 5
+  },
+  {
+    "file": "CoDiverSample.java",
+    "line": 66,
+    "severity": "Critical",
+    "type": "Empty Catch Block",
+    "target": "process",
+    "category": "Implementation",
+    "reason": "Exception swallowed without logs or logic",
+    "before_refactor_legacy_order": 6
+  },
+  {
+    "file": "CoDiverSample.java",
+    "line": 19,
+    "severity": "Low",
+    "type": "Magic Numbers",
+    "target": "process",
+    "category": "Implementation",
+    "reason": "36 hard-coded numeric literals found",
+    "before_refactor_legacy_order": 7
+  },
+  {
+    "file": "CoDiverSample.java",
+    "line": 1,
+    "severity": "Low",
+    "type": "Invalid Class Name",
+    "target": "badExample",
+    "category": "Naming",
+    "reason": "Class name should follow PascalCase convention",
+    "before_refactor_legacy_order": 8
+  },
+  {
+    "file": "CoDiverSample.java",
+    "line": 1,
+    "severity": "Low",
+    "type": "Missing Class Documentation",
+    "target": "badExample",
+    "category": "Documentation",
+    "reason": "No Javadoc found for class",
+    "before_refactor_legacy_order": 9
+  },
+  {
+    "file": "CoDiverSample.java",
+    "line": 19,
+    "severity": "Low",
+    "type": "Missing Method Documentation",
+    "target": "process",
+    "category": "Documentation",
+    "reason": "No Javadoc found for public method",
+    "before_refactor_legacy_order": 10
+  },
+  {
+    "file": "CoDiverSample.java",
+    "line": 70,
+    "severity": "Low",
+    "type": "Missing Method Documentation",
+    "target": "getValue",
+    "category": "Documentation",
+    "reason": "No Javadoc found for public method",
+    "before_refactor_legacy_order": 11
+  },
+  {
+    "file": "CoDiverSample.java",
+    "line": 74,
+    "severity": "Low",
+    "type": "Missing Method Documentation",
+    "target": "setValue",
+    "category": "Documentation",
+    "reason": "No Javadoc found for public method",
+    "before_refactor_legacy_order": 12
+  },
+  {
+    "file": "CoDiverSample.java",
+    "line": 78,
+    "severity": "Low",
+    "type": "Missing Method Documentation",
+    "target": "isActive",
+    "category": "Documentation",
+    "reason": "No Javadoc found for public method",
+    "before_refactor_legacy_order": 13
+  }
+]

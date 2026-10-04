@@ -1,0 +1,111 @@
+{
+  "count": 13,
+  "issues": [
+    {
+      "Type": "Swiss Army Knife",
+      "Target": "badExample",
+      "Severity": "Medium",
+      "Reason": "7 interfaces implemented",
+      "Category": "Design"
+    },
+    {
+      "Type": "God Class",
+      "Target": "badExample",
+      "Severity": "Critical",
+      "Reason": "4 methods, 16 fields",
+      "Category": "Design"
+    },
+    {
+      "Type": "Feature Envy",
+      "Target": "badExample.process",
+      "Severity": "Medium",
+      "Reason": "21 external method calls",
+      "Category": "Design"
+    },
+    {
+      "Type": "Long Method",
+      "Target": "process",
+      "Severity": "Medium",
+      "Reason": "Method body contains 32 statements",
+      "Category": "Implementation"
+    },
+    {
+      "Type": "Long Parameter List",
+      "Target": "process",
+      "Severity": "Low",
+      "Reason": "7 parameters",
+      "Category": "Implementation"
+    },
+    {
+      "Type": "Empty Catch Block",
+      "Target": "process",
+      "Severity": "Critical",
+      "Reason": "Exception swallowed without logs or logic",
+      "Category": "Implementation"
+    },
+    {
+      "Type": "Magic Numbers",
+      "Target": "process",
+      "Severity": "Low",
+      "Reason": "36 hard-coded numeric literals found",
+      "Category": "Implementation"
+    },
+    {
+      "Type": "Invalid Class Name",
+      "Target": "badExample",
+      "Severity": "Low",
+      "Reason": "Class name should follow PascalCase convention",
+      "Category": "Naming"
+    },
+    {
+      "Type": "Missing Class Documentation",
+      "Target": "badExample",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for class",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "process",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "getValue",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "setValue",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    },
+    {
+      "Type": "Missing Method Documentation",
+      "Target": "isActive",
+      "Severity": "Low",
+      "Reason": "No Javadoc found for public method",
+      "Category": "Documentation"
+    }
+  ],
+  "signature_order": [
+    "Design|Swiss Army Knife|badExample|Medium|7 interfaces implemented",
+    "Design|God Class|badExample|Critical|4 methods, 16 fields",
+    "Design|Feature Envy|badExample.process|Medium|21 external method calls",
+    "Implementation|Long Method|process|Medium|Method body contains 32 statements",
+    "Implementation|Long Parameter List|process|Low|7 parameters",
+    "Implementation|Empty Catch Block|process|Critical|Exception swallowed without logs or logic",
+    "Implementation|Magic Numbers|process|Low|36 hard-coded numeric literals found",
+    "Naming|Invalid Class Name|badExample|Low|Class name should follow PascalCase convention",
+    "Documentation|Missing Class Documentation|badExample|Low|No Javadoc found for class",
+    "Documentation|Missing Method Documentation|process|Low|No Javadoc found for public method",
+    "Documentation|Missing Method Documentation|getValue|Low|No Javadoc found for public method",
+    "Documentation|Missing Method Documentation|setValue|Low|No Javadoc found for public method",
+    "Documentation|Missing Method Documentation|isActive|Low|No Javadoc found for public method"
+  ]
+}

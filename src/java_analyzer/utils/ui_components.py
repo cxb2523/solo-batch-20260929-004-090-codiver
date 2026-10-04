@@ -8,8 +8,17 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
-from typing import Dict, Any
-from utils.helpers import calculate_quality_score
+from typing import Any, Dict, List
+
+try:
+    from detectors.base import REGISTRY, Finding, load_detectors
+    from utils.helpers import calculate_quality_score
+except ImportError:
+    from java_analyzer.detectors.base import REGISTRY, Finding, load_detectors
+    from java_analyzer.utils.helpers import calculate_quality_score
+
+
+load_detectors()
 
 
 def render_executive_summary(df: pd.DataFrame, metrics: Dict[str, Any]):
@@ -248,6 +257,31 @@ def render_detailed_findings(df: pd.DataFrame):
                              "application/json", use_container_width=True)
     else:
         st.success(" [SUCCESS]  No issues found! Your code meets all quality standards.")
+
+
+def render_detector_catalog(findings: List[Finding], cache_hits: int):
+    """Render registered detectors in stable registry order."""
+    st.markdown("###  Detector Catalog")
+    st.caption(f"Cache hits this run: {cache_hits}")
+
+    findings_by_detector = {}
+    for finding in findings:
+        findings_by_detector.setdefault(finding.detector_id, []).append(finding)
+
+    for entry in REGISTRY.entries():
+        detector_findings = findings_by_detector.get(entry.detector_id, [])
+        label = f"{entry.name} — {len(detector_findings)} finding(s)"
+        with st.expander(label):
+            st.caption(entry.description or entry.category)
+            if detector_findings:
+                for finding in detector_findings:
+                    st.markdown(
+                        f"- `{finding.file}:{finding.line}` "
+                        f"**{finding.severity}** — {finding.type} "
+                        f"({finding.target}): {finding.reason}"
+                    )
+            else:
+                st.success("No findings from this detector.")
 
 
 def render_source_code_viewer(source_code: str):
